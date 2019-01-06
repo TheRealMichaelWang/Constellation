@@ -12,7 +12,8 @@
           "Cosmos.Build": "2018.10.10",
           "Cosmos.Debug.Kernel": "2018.10.10",
           "Cosmos.System2": "2018.10.10",
-          "Microsoft.NETCore.App": "2.0.9"
+          "Microsoft.NETCore.App": "2.0.9",
+          "System.Speech": "3.0.0.0"
         },
         "runtime": {
           "COS.dll": {}
@@ -927,6 +928,14 @@
             "fileVersion": "2.0.26615.1"
           }
         }
+      },
+      "System.Speech/3.0.0.0": {
+        "runtime": {
+          "System.Speech.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.6920.1205"
+          }
+        }
       }
     }
   },
@@ -1054,6 +1063,11 @@
       "sha512": "sha512-zmvegsk0Gb+vjGigDsL+dnaZ63qhjP7jN8dXczZok1I+FXJVoTo59qreZAI8DGEHCYw4NG8RbBzh6kf0L//jww==",
       "path": "runtime.win-x86.microsoft.netcore.dotnethostresolver/2.0.9",
       "hashPath": "runtime.win-x86.microsoft.netcore.dotnethostresolver.2.0.9.nupkg.sha512"
+    },
+    "System.Speech/3.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

@@ -139,12 +139,6 @@ namespace COS
                 firstPlayerResult++;
                 Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
                 Console.WriteLine("You won! Press E to exit");
-                ConsoleKeyInfo info = Console.ReadKey();
-                if(info.Key == ConsoleKey.E)
-                {
-                    Console.Clear();
-                    return;
-                }
             }
             if (ballPositionX == 0)
             {
@@ -153,13 +147,8 @@ namespace COS
                 ballDirectionUp = true;
                 secondPlayerResult++;
                 Console.SetCursorPosition(Console.WindowWidth / 2, Console.WindowHeight / 2);
-                Console.WriteLine("You lost. Press E to exit");
+                Console.WriteLine("You lost.");
                 ConsoleKeyInfo info = Console.ReadKey();
-                if (info.Key == ConsoleKey.E)
-                {
-                    Console.Clear();
-                    return;
-                }
             }
 
             if (ballPositionX < 3)
@@ -240,7 +229,7 @@ namespace COS
                 PrintResult();
                 for(int i = 0; i < 10000; i++)
                 {
-                    for(int x = 0; x < 5000; x++)
+                    for(int x = 0; x < 500; x++)
                     {
                         var a = 8 * 9 / 3.14 - 9;
                     }

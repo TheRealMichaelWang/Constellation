@@ -49,7 +49,7 @@ namespace COS
             }
             return -1;
         }
-        public void Start()
+        public void Start(NoteBook book)
         {
             while(true)
             {
@@ -93,6 +93,10 @@ namespace COS
                 else if(inp=="threadmanager")
                 {
                     threadManager.OpenThreadManager("Sign In Sheet","signinsheet","This application helps easy sign in and easy sign outs.");
+                }
+                else if(inp == "save")
+                {
+                    book.book.Add(sheet);
                 }
                 else if(inp == "clear")
                 {

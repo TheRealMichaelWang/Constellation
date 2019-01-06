@@ -119,4 +119,10 @@
         <PackageReference Include="Cosmos.System2" Version="*" NoWarn="NU1604" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="System.Speech">
+        <HintPath>..\..\..\..\..\Program Files\Reference Assemblies\Microsoft\Framework\v3.0\System.Speech.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>

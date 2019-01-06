@@ -34,6 +34,10 @@ namespace COS
                 {
                     manager.OpenThreadManager("Random Generator","home/random","This application generates random numbers.");
                 }
+                else if(inp == "bin")
+                {
+                    Console.WriteLine(random.Next(2));
+                }
                 else
                 {
                     for(int i = 0; i < 20; i++)
@@ -135,12 +139,14 @@ namespace COS
                     {
                         Console.Write("home/timer/seconds>");
                         int seconds = int.Parse(Console.ReadLine());
-                        DateTime waitill = DateTime.Now.AddSeconds(seconds);
+                        DateTime other = DateTime.Now;
+                        DateTime waitill = other.AddSeconds(seconds);
                         Console.Clear();
                         Console.WriteLine("Waiting...");
                         while (DateTime.Now!=waitill)
                         {
-                            
+                            Console.Clear();
+                            Console.WriteLine(DateTime.Now);
                         }
                         Console.Clear();
                         Console.WriteLine("Timer Done");

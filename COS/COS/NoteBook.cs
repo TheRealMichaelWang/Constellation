@@ -8,11 +8,13 @@ namespace COS
     class NoteBook
     {
         public List<List<string>> book;
+        public List<List<string>> appdata;
         ThreadManager threadManager;
         public NoteBook()
         {
             book = new List<List<string>>();
             threadManager = new ThreadManager();
+            appdata = new List<List<string>>();
         }
         public void StartApp()
         {
@@ -70,7 +72,7 @@ namespace COS
                     {
                         try
                         {
-                            book[int.Parse(args[1]) - 1] = MakePage();
+                            book[int.Parse(args[1]) - 1] = MakePage(book[int.Parse(args[1]) - 1]);
                         }
                         catch
                         {
@@ -111,6 +113,42 @@ namespace COS
                 if(inp == "done")
                 {
                     break;
+                }
+                toret.Add(inp);
+                line++;
+            }
+            return toret;
+        }
+        public List<string> MakePage(List<string> original)
+        {
+            Console.WriteLine("Write 'done' once you are finished, 'keep' to keep the original line, and 'cancel' to cancel the operation");
+            List<string> toret = new List<string>();
+            string inp = "";
+            int line = 1;
+            while (true)
+            {
+                Console.Write("notebook/write>line" + line + ">");
+                inp = Console.ReadLine();
+                if (inp == "done")
+                {
+                    break;
+                }
+                if(inp == "cancel")
+                {
+                    return original;
+                }
+                if(inp == "keep")
+                {
+                    try
+                    {
+                        inp = original[line-1];
+                        Console.Write("Kept>" + inp);
+                        Console.WriteLine();
+                    }
+                    catch
+                    {
+                        Console.WriteLine("Original file doens't go that far.");
+                    }
                 }
                 toret.Add(inp);
                 line++;

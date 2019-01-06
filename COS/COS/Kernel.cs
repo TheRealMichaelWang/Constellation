@@ -19,6 +19,10 @@ namespace COS
         SystemLogger systemLogger;
         EssayReviser essayReviser;
         Pong pong;
+        MakeArt makeArt;
+        Knowledge knowledge;
+        SaveFiles saveFiles;
+        GraphicFx gfx;
         protected override void BeforeRun()
         {
             try
@@ -31,10 +35,18 @@ namespace COS
                 ticTacToe = new TicTacToe();
                 essayReviser = new EssayReviser();
                 pong = new Pong();
+                makeArt = new MakeArt();
                 Console.WriteLine("Loading Thread Manager");
                 threadManager = new ThreadManager();
                 Console.WriteLine("Loading NoteBook");
+                var fs = new Sys.FileSystem.CosmosVFS();
+                Sys.FileSystem.VFS.VFSManager.RegisterVFS(fs);
+                saveFiles = new SaveFiles();
                 noteBook = new NoteBook();
+                Console.WriteLine("Loading Knowldege");
+                knowledge = new Knowledge();
+                Console.WriteLine("Loading Graphical Effexts");
+                gfx = new GraphicFx();
                 Console.WriteLine("Constellation OS booted succesfully");
                 systemLogger = new SystemLogger();
                 systemLogger.Log("Constellation booted up");
@@ -57,16 +69,21 @@ namespace COS
             {
                 Console.Write("home>");
                 string input = Console.ReadLine();
+                systemLogger.Log("User typed in '" + input + "'");
                 if (!execute(input))
                 {
-                    systemLogger.Log("User typed in '" + input + "'");
-                    Console.WriteLine("Constellation OS doesn't recognize the command '" + input + "'or application. Type 'help' for command help.");
+                    if(!knowledge.Query(input))
+                    {
+                        Console.WriteLine("Constellation OS doesn't recognize the command '" + input + "'or application. Type 'help' for command help.");
+                    }
                 }
             }
         }
         public bool execute(string input)
         {
+            Tools tool = new Tools();
             bool executed = false;
+            input = tool.RemoveCapitals(input);
             systemLogger.Log("Pumped through '"+input+"'");
             if (input.StartsWith("error"))
             {
@@ -127,7 +144,7 @@ namespace COS
             }
             if (input == "signinsheet")
             {
-                signInSheet.Start();
+                signInSheet.Start(noteBook);
                 executed = true;
             }
             if (input == "cls" || input == "clear")
@@ -145,9 +162,15 @@ namespace COS
                 BuiltInApps.Random();
                 executed = true;
             }
+            if(input == "makeart"||input == "mkart")
+            {
+                makeArt.Main(noteBook);
+                executed = true;
+            }
             if(input == "tictactoe")
             {
                 Console.Clear();
+                ticTacToe = new TicTacToe();
                 ticTacToe.Main();
                 executed = true;
                 Console.ForegroundColor = ConsoleColor.White;
@@ -155,6 +178,7 @@ namespace COS
             if(input == "pong")
             {
                 pong.Main();
+                executed = true;
             }
             if(input == "essayrev"||input == "essayrevise"||input == "reviser")
             {
@@ -181,7 +205,7 @@ namespace COS
                 Console.WriteLine("CALCULATOR       Opens the basic desktop calculator.");
                 Console.WriteLine("STATISTICS       Opens the desktop statistics calculator.");
                 Console.WriteLine("TIMER            Opens the timer.");
-                Console.WriteLine("RANDOM           Random number generator.");
+                Console.WriteLine("SET              Sets a setting");
                 Console.WriteLine("MORE             Displays more apps.");
                 executed = true;
             }
@@ -190,21 +214,38 @@ namespace COS
                 Console.WriteLine("PONG             I think you know what this is.");
                 Console.WriteLine("TICTACTOE        Have some fun playing tic tac toe.");
                 Console.WriteLine("SAVELOG          Saves the kernels logs.");
-                Console.WriteLine("SIGNINSHEET      Opens the sign in sheet app");
+                Console.WriteLine("SIGNINSHEET      Opens the sign in sheet app.");
+                Console.WriteLine("RANDOM           Random number generator.");
+                Console.WriteLine("MAKEART          Make a picture.");
+                Console.WriteLine("SAVE             Saves a files in all programs.");
+                Console.WriteLine("LOAD             Loads all files for every program.");
+                Console.WriteLine("DSKMGR           Opens the disk manager app.");
                 executed = true;
             }
             if (input == "about")
             {
-                Console.WriteLine("Constellation Operating System\n(C) Michael Wang\n");
+                Console.WriteLine("Constellation Operating System\nVersion 1.0\n\n(C) Michael Wang\n");
                 Console.WriteLine("Michael Wang created the Constellation operating system as a robust os for older/less powerful computers. Just under 20MB of memory, COS only requires 20MB harddisk space and 128KB memory, COS is a single thread operating system.");
                 executed = true;
             }
             if (input == "sleep")
             {
-                Console.BackgroundColor = ConsoleColor.Black;
                 Console.Clear();
+                if(gfx.graphicsoption == "standard")
+                {
+                    gfx.Standard();
+                }
+                else if(gfx.graphicsoption == "matrix")
+                {
+                    gfx.Matrix();
+                }
+                else
+                {
+                    gfx.Standard();
+                }
                 Console.ReadKey();
                 Console.BackgroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.Clear();
                 executed = true;
             }
@@ -252,6 +293,44 @@ namespace COS
             if(input == "savelogs")
             {
                 systemLogger.SaveLog(noteBook);
+                executed = true;
+            }
+            if(input == "load")
+            {
+                saveFiles.LoadNotebook(noteBook);
+                gfx.graphicsoption = saveFiles.GetGfxSettings();
+                executed = true;
+            }
+            if(input == "save")
+            {
+                saveFiles.SaveNotebook(noteBook);
+                saveFiles.SaveGfxSettings(gfx.graphicsoption);
+                executed = true;
+            }
+            if(input.StartsWith("set"))
+            {
+                string[] args = input.Split(' ');
+                if (args.Length == 3)
+                {
+                    if(args[1] == "screensaver")
+                    {
+                        gfx.graphicsoption = args[2];
+                    }
+                }
+                else if(input == "set help"||input == "set ?")
+                {
+                    Console.WriteLine("Attributes to set:");
+                    Console.WriteLine("SCREENSAVER              The screen saver atribute");
+                }
+                else
+                {
+                    Console.WriteLine("Err 1");
+                }
+                executed = true;
+            }
+            if(input == "dskmgr")
+            {
+                saveFiles.StartDiskManager();
                 executed = true;
             }
             return executed;
