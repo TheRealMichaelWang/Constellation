@@ -12,3 +12,5 @@ Notebook updated              -I updated the notebook to allow saving and loadin
 Screen Saver options added    -You can also make the screen saver look like the matrix.
 
 Disk Manager added            -I also added a disk manager.
+
+ComEx added                   -An interpreter to run custom programs.
