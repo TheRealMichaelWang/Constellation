@@ -1,5 +1,5 @@
 # Constellation
-Constellation Operating System (COS) is a command-line operating system taking only 20MB hard disk space. To use it, just burn the iso file in front of you to a disk. Then use that disk as a os.
+Constellation Operating System (COS) is a command-line operating system taking only 20MB hard disk space. To use it, just burn the iso file in front of you to a disk. Then use that disk as a os. Constellation was written 100% in c#.
 
 Updates & Notes:
 
