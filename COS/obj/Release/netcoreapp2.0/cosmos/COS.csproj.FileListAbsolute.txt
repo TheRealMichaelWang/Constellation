@@ -1,0 +1,17 @@
+C:\Users\Michael\Documents\COS\COS\bin\Release\netcoreapp2.0\cosmos\COS.deps.json
+C:\Users\Michael\Documents\COS\COS\bin\Release\netcoreapp2.0\cosmos\COS.dll
+C:\Users\Michael\Documents\COS\COS\bin\Release\netcoreapp2.0\cosmos\COS.pdb
+C:\Users\Michael\Documents\COS\COS\obj\Release\netcoreapp2.0\cosmos\COS.csproj.CoreCompileInputs.cache
+C:\Users\Michael\Documents\COS\COS\obj\Release\netcoreapp2.0\cosmos\COS.AssemblyInfoInputs.cache
+C:\Users\Michael\Documents\COS\COS\obj\Release\netcoreapp2.0\cosmos\COS.AssemblyInfo.cs
+C:\Users\Michael\Documents\COS\COS\obj\Release\netcoreapp2.0\cosmos\COS.dll
+C:\Users\Michael\Documents\COS\COS\obj\Release\netcoreapp2.0\cosmos\COS.pdb
+C:\Users\MichaelWang\Documents\COS\COS\bin\Release\netcoreapp2.0\cosmos\COS.deps.json
+C:\Users\MichaelWang\Documents\COS\COS\bin\Release\netcoreapp2.0\cosmos\COS.dll
+C:\Users\MichaelWang\Documents\COS\COS\bin\Release\netcoreapp2.0\cosmos\COS.pdb
+C:\Users\MichaelWang\Documents\COS\COS\obj\Release\netcoreapp2.0\cosmos\COS.csprojAssemblyReference.cache
+C:\Users\MichaelWang\Documents\COS\COS\obj\Release\netcoreapp2.0\cosmos\COS.csproj.CoreCompileInputs.cache
+C:\Users\MichaelWang\Documents\COS\COS\obj\Release\netcoreapp2.0\cosmos\COS.AssemblyInfoInputs.cache
+C:\Users\MichaelWang\Documents\COS\COS\obj\Release\netcoreapp2.0\cosmos\COS.AssemblyInfo.cs
+C:\Users\MichaelWang\Documents\COS\COS\obj\Release\netcoreapp2.0\cosmos\COS.dll
+C:\Users\MichaelWang\Documents\COS\COS\obj\Release\netcoreapp2.0\cosmos\COS.pdb
