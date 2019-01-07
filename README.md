@@ -7,7 +7,7 @@ Constellation Knowlege added  -This is like siri, except with the console.
 
 Joke Box added                -This is a humourous collection of funny jokes.
 
-Notebook updated              -I updated the notebook to allow saving and loading files.
+Notebook updated              -I updated the notebook to allow saving and loading files. We also added a graphical user interface to the                                  notebook
 
 Screen Saver options added    -You can also make the screen saver look like the matrix.
 
