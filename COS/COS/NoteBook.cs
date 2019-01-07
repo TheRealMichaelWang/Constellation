@@ -10,6 +10,7 @@ namespace COS
         public List<List<string>> book;
         public List<List<string>> appdata;
         ThreadManager threadManager;
+        
         public NoteBook()
         {
             book = new List<List<string>>();

@@ -23,6 +23,7 @@ namespace COS
         Knowledge knowledge;
         SaveFiles saveFiles;
         GraphicFx gfx;
+        public string name = "Current_User";
         protected override void BeforeRun()
         {
             try
@@ -69,7 +70,7 @@ namespace COS
             {
                 Console.Write("home>");
                 string input = Console.ReadLine();
-                systemLogger.Log("User typed in '" + input + "'");
+                systemLogger.Log(name+" typed in '" + input + "'");
                 if (!execute(input))
                 {
                     if(!knowledge.Query(input))
@@ -243,7 +244,6 @@ namespace COS
                 {
                     gfx.Standard();
                 }
-                Console.ReadKey();
                 Console.BackgroundColor = ConsoleColor.Blue;
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Clear();
@@ -267,15 +267,15 @@ namespace COS
                     Console.WriteLine("Constellation Program Executor\nConstellation OS (C) Michael Wang");
                     int page = int.Parse(input.TrimStart("start ".ToCharArray()));
                     List<string> lines = noteBook.book[page - 1];
-                    int cline = 1;
-                    foreach (string line in lines)
+                    ComEx comEx = new ComEx();
+                    try
                     {
-                        if(!execute(line))
-                        {
-                            Console.WriteLine("Err 3 on line " + cline);
-                            break;
-                        }
-                        cline++;
+                        Tools tools = new Tools();
+                        comEx.Main(tool.ListToArray(lines));
+                    }
+                    catch
+                    {
+
                     }
                     Console.WriteLine("Done");
                 }
@@ -293,6 +293,7 @@ namespace COS
             if(input == "savelogs")
             {
                 systemLogger.SaveLog(noteBook);
+                saveFiles.SaveLogs(systemLogger);
                 executed = true;
             }
             if(input == "load")
@@ -316,22 +317,33 @@ namespace COS
                     {
                         gfx.graphicsoption = args[2];
                     }
+                    if(args[1] == "name")
+                    {
+                        name = args[2];
+                    }
+                    executed = true;
                 }
                 else if(input == "set help"||input == "set ?")
                 {
                     Console.WriteLine("Attributes to set:");
                     Console.WriteLine("SCREENSAVER              The screen saver atribute");
+                    Console.WriteLine("NAME                     The name of the user of the os");
+                    executed = true;
                 }
                 else
                 {
                     Console.WriteLine("Err 1");
+                    executed = true;
                 }
-                executed = true;
             }
             if(input == "dskmgr")
             {
                 saveFiles.StartDiskManager();
                 executed = true;
+            }
+            if(input == "rdkey")
+            {
+                Console.ReadKey();
             }
             return executed;
         }

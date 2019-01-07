@@ -15,7 +15,6 @@ C:\Users\MichaelWang\Documents\COS\COS\obj\Debug\netcoreapp2.0\cosmos\COS.Assemb
 C:\Users\MichaelWang\Documents\COS\COS\obj\Debug\netcoreapp2.0\cosmos\COS.AssemblyInfo.cs
 C:\Users\MichaelWang\Documents\COS\COS\obj\Debug\netcoreapp2.0\cosmos\COS.dll
 C:\Users\MichaelWang\Documents\COS\COS\obj\Debug\netcoreapp2.0\cosmos\COS.pdb
-C:\Users\MichaelWang\Documents\COS\COS\obj\Debug\netcoreapp2.0\cosmos\COS.csprojAssemblyReference.cache
 C:\Users\Michael Wang\Documents\COS\COS\bin\Debug\netcoreapp2.0\cosmos\COS.deps.json
 C:\Users\Michael Wang\Documents\COS\COS\bin\Debug\netcoreapp2.0\cosmos\COS.dll
 C:\Users\Michael Wang\Documents\COS\COS\bin\Debug\netcoreapp2.0\cosmos\COS.pdb

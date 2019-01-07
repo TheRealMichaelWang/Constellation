@@ -70,6 +70,11 @@ namespace COS
             File.WriteAllText(filesystem + "graphics.dat", settings);
             Console.WriteLine("Done");
         }
+        public void SaveLogs(SystemLogger logger)
+        {
+            Tools tools = new Tools();
+            File.WriteAllLines(filesystem + "logs.dat",tools.ListToArray(logger.log));
+        }
         public void StartDiskManager()
         {
             Console.WriteLine("Disk Manager");
@@ -99,7 +104,7 @@ namespace COS
                 }
                 else if(input.StartsWith("peek "))
                 {
-                    string path = input.TrimStart("peek".ToCharArray());
+                    string path = input.TrimStart("peek ".ToCharArray());
                     try
                     {
                         Console.WriteLine(File.ReadAllText(filesystem + path));
