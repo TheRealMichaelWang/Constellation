@@ -10,7 +10,60 @@ namespace COS
         public List<List<string>> book;
         public List<List<string>> appdata;
         ThreadManager threadManager;
-        
+        public List<string> GUIEdit(List<string> text)
+        {
+            string alltext = "";
+            foreach(string line in text)
+            {
+                alltext = alltext + line+"\n";
+            }
+            while(true)
+            {
+                Console.WriteLine("|F1 Save|F2 Cancel|F5 DateTime|\n\n"+alltext+"[]");
+                if(Console.KeyAvailable)
+                {
+                    ConsoleKeyInfo keyInfo = Console.ReadKey();
+                    if(keyInfo.Key == ConsoleKey.F1)
+                    {
+                        break;
+                    }
+                    else if(keyInfo.Key == ConsoleKey.F5)
+                    {
+                        alltext = alltext + DateTime.Now;
+                    }
+                    else if(keyInfo.Key == ConsoleKey.F2)
+                    {
+                        return text;
+                    }
+                    else if(keyInfo.Key == ConsoleKey.Enter)
+                    {
+                        alltext = alltext + "\n";
+                    }
+                    else if(keyInfo.Key == ConsoleKey.Backspace)
+                    {
+                        if (alltext.Length > 0)
+                        {
+                            alltext = alltext.Remove(alltext.Length - 1, 1);
+                        }
+                    }
+                    else
+                    {
+                        alltext += keyInfo.KeyChar;
+                    }
+                }
+                for (int i = 0; i < 10000; i++)
+                {
+                    for (int x = 0; x < 500; x++)
+                    {
+                        var a = 8 * 9 / 3.14 - 9;
+                    }
+                }
+                Console.Clear();
+            }
+            Tools tools = new Tools();
+            Console.Clear();
+            return tools.ArrayToList(alltext.Split("\n"));
+        }
         public NoteBook()
         {
             book = new List<List<string>>();
@@ -39,7 +92,9 @@ namespace COS
                     Console.WriteLine("ALL          Prints the entire notebook.");
                     Console.WriteLine("PEEK         Prints out all the text on the given page.");
                     Console.WriteLine("EDIT         Edits the text on a page.");
+                    Console.WriteLine("GUIEDIT      Uses a GUI to edit.");
                     Console.WriteLine("NEW          Makes a new page.");
+                    Console.WriteLine("GUINEW       Makes a new page using GUI.");
                     Console.WriteLine("EXIT         Exits the notebook app.");
                     Console.WriteLine("CLEAR        Clears the console");
                     Console.WriteLine("CLS          Clears the console.");
@@ -48,6 +103,10 @@ namespace COS
                 if(inp == "new")
                 {
                     book.Add(MakePage());
+                }
+                if(inp == "guinew")
+                {
+                    book.Add(GUIEdit(new List<string>()));
                 }
                 if(inp == "clear"||inp == "cls")
                 {
@@ -85,6 +144,17 @@ namespace COS
                         try
                         {
                             PrintPage(book[int.Parse(args[1])-1]);
+                        }
+                        catch
+                        {
+                            Console.WriteLine("That page doesn't exist.");
+                        }
+                    }
+                    if(args[0] == "guiedit")
+                    {
+                        try
+                        {
+                            book[int.Parse(args[1]) - 1] = GUIEdit(book[int.Parse(args[1]) - 1]);
                         }
                         catch
                         {

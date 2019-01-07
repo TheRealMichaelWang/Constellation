@@ -131,6 +131,10 @@ namespace COS
                         Console.WriteLine(GetValue(comargs[2]));
                     }
                 }
+                if(comargs[0] == "lpmsg")
+                {
+                    iterationmsg = comargs[2];
+                }
             }
             if (comargs.Length == 4)
             {

@@ -28,3 +28,4 @@ C:\Users\Michael Wang\Documents\COS\COS\bin\Debug\netcoreapp2.0\cosmos\System.Sp
 C:\Users\Michael Wang\Documents\COS\COS\obj\Debug\netcoreapp2.0\cosmos\COS.csproj.CopyComplete
 C:\Users\MichaelWang\Documents\COS\COS\bin\Debug\netcoreapp2.0\cosmos\System.Speech.dll
 C:\Users\MichaelWang\Documents\COS\COS\obj\Debug\netcoreapp2.0\cosmos\COS.csproj.CopyComplete
+C:\Users\MichaelWang\Documents\COS\COS\obj\Debug\netcoreapp2.0\cosmos\COS.csprojAssemblyReference.cache
